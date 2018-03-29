@@ -127,6 +127,7 @@ return [
                 'users' => 'App\GraphQL\Query\UsersQuery'
             ],
             'mutation' => [
+                'createUser' => 'App\GraphQL\Mutation\CreateUserMutation',
                 'updateUser' => 'App\GraphQL\Mutation\UpdateUserMutation'
             ]
         ]
