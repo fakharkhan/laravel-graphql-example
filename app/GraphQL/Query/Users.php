@@ -8,7 +8,7 @@ use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use GraphQL;
 
-class UsersQuery extends Query
+class Users extends Query
 {
     protected $attributes = [
         'name' => 'users',
@@ -22,18 +22,9 @@ class UsersQuery extends Query
     public function args()
     {
         return [
-            'id' => [
-                'name' => 'id',
-                'type' => Type::string()
-            ],
-            'name' => [
-                'name' => 'name',
-                'type' => Type::string()
-            ],
-            'email' => [
-                'name' => 'email',
-                'type' => Type::string()
-            ]
+            'id' => ['name' => 'id','type' => Type::string()],
+            'name' => ['name' => 'name','type' => Type::string()],
+            'email' => ['name' => 'email','type' => Type::string()]
         ];
     }
 

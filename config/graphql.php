@@ -124,11 +124,11 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                'users' => 'App\GraphQL\Query\UsersQuery'
+                'users' => 'App\GraphQL\Query\Users'
             ],
             'mutation' => [
-                'createUser' => 'App\GraphQL\Mutation\CreateUserMutation',
-                'updateUser' => 'App\GraphQL\Mutation\UpdateUserMutation'
+                'createUser' => 'App\GraphQL\Mutation\CreateUser',
+                'updateUser' => 'App\GraphQL\Mutation\UpdateUser'
             ]
         ]
     ],

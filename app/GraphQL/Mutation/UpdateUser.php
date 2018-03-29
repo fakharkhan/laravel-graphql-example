@@ -8,11 +8,11 @@ use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use GraphQL;
 
-class CreateUserMutation extends Mutation
+class UpdateUser extends Mutation
 {
-
     protected $attributes = [
-        'name' => 'CreateUser'
+        'name' => 'UpdateUser',
+        'description'=> 'Update User'
     ];
 
     public function type()
@@ -25,26 +25,27 @@ class CreateUserMutation extends Mutation
         return [
             'id' => ['name' => 'id', 'type' => Type::string()],
             'name' => ['name' => 'name', 'type' => Type::string()],
-            'email' => ['name' => 'email', 'type' => Type::string()],
-            'password' => ['name' => 'password', 'type' => Type::string()]
+            'email' => ['name' => 'email', 'type' => Type::string()]
         ];
     }
 
     public function rules()
     {
         return [
-            'name' => ['required'],
-            'email' => ['required', 'email'],
-            'password' => ['required']
+            'id' => ['required']
         ];
     }
 
     public function resolve($root, $args)
     {
-        if(isset($args['password']))
-            $args['password']=bcrypt($args['password']);
 
-        $user = User::create($args);
+        $user = User::find($args['id']);
+
+        if (!$user) {
+            return null;
+        }
+
+        $user->update($args);
 
         return $user;
     }
